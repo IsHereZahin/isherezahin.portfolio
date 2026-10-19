@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import ThemeScript from "@/components/layouts/ThemeScript";
 import dbConnect from "@/database/services/mongo";
 import ProviderIndex from "@/providers/ProviderIndex";
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { readonly children: React.Reac
             </head>
             <body className="bg-background">
                 <ProviderIndex>{children}</ProviderIndex>
+                <Analytics />
             </body>
         </html>
     );
