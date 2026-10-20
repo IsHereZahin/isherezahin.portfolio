@@ -9,5 +9,6 @@ export const metadata: Metadata = {
 };
 
 export default function GuestbookPage() {
-    return <GuestbookIndex discussionNumber={4} />;
+    // The original guestbook discussion (#4) was removed; the guestbook now lives in #24.
+    return <GuestbookIndex discussionNumber={24} />;
 }
