@@ -117,7 +117,8 @@ export function proxy(request: NextRequest) {
 
 export const config = {
     matcher: [
-        // Everything except API routes, Next internals and files with extensions.
-        "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|manifest.webmanifest|.*\\..*$).*)",
+        // Everything except API routes, Next internals, Vercel's own endpoints
+        // (Web Analytics posts to /_vercel/insights) and files with extensions.
+        "/((?!api|_next/static|_next/image|_vercel|favicon.ico|sitemap.xml|robots.txt|manifest.webmanifest|.*\\..*$).*)",
     ],
 };
