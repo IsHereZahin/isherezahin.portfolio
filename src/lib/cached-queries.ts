@@ -44,6 +44,18 @@ interface ProjectDocument {
   published: boolean;
 }
 
+/** A document as `.lean()` returns it, before `withStringId` converts `_id`. */
+type LeanDocument<T extends { _id: string }> = Omit<T, "_id"> & { _id: unknown };
+
+/**
+ * `"use cache"` serializes return values with the same rules as Client
+ * Component props, which reject BSON ObjectIds (they define `toJSON`). Lean
+ * documents must expose `_id` as a string before leaving this module.
+ */
+function withStringId<T extends { _id: unknown }>(doc: T): Omit<T, "_id"> & { _id: string } {
+  return { ...doc, _id: String(doc._id) };
+}
+
 /**
  * Get a single blog post by slug
  */
@@ -52,9 +64,9 @@ export async function getCachedBlog(slug: string): Promise<BlogDocument | null> 
   const blog = await BlogModel.findOne({
     slug,
     published: true,
-  }).lean();
+  }).lean<LeanDocument<BlogDocument>>();
 
-  return blog as BlogDocument | null;
+  return blog ? withStringId(blog) : null;
 }
 
 /**
@@ -65,9 +77,9 @@ export async function getCachedProject(slug: string): Promise<ProjectDocument | 
   const project = await ProjectModel.findOne({
     slug,
     published: true,
-  }).lean();
+  }).lean<LeanDocument<ProjectDocument>>();
 
-  return project as ProjectDocument | null;
+  return project ? withStringId(project) : null;
 }
 
 /**
@@ -102,7 +114,7 @@ export async function getCachedRecentBlogs(limit: number = 3): Promise<BlogDocum
     .limit(limit)
     .lean();
 
-  return blogs as unknown as BlogDocument[];
+  return blogs.map(withStringId) as unknown as BlogDocument[];
 }
 
 /**
@@ -115,7 +127,7 @@ export async function getCachedRecentProjects(limit: number = 3): Promise<Projec
     .limit(limit)
     .lean();
 
-  return projects as unknown as ProjectDocument[];
+  return projects.map(withStringId) as unknown as ProjectDocument[];
 }
 
 /**
