@@ -9,6 +9,7 @@ import {
     TypingIndicator,
 } from "@/components/chat";
 import { BlurImage, ConfirmDialog } from "@/components/ui";
+import { DEFAULT_AVATAR } from "@/lib/constants";
 import {
     deleteConversationPermanently,
     editMessage,
@@ -245,7 +246,7 @@ export default function ChatView({ conversation, onBack, onDelete }: ChatViewPro
                         <ArrowLeft className="h-5 w-5" />
                     </button>
                     <BlurImage
-                        src={conversation.participantImage || "/default-avatar.png"}
+                        src={conversation.participantImage || DEFAULT_AVATAR}
                         alt={conversation.participantName}
                         width={40}
                         height={40}

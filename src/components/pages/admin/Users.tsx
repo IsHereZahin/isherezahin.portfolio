@@ -3,6 +3,7 @@
 import { SendMessageModal } from "@/components/chat";
 import { BlurImage, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui";
 import { adminUsers, ApiError } from "@/lib/api";
+import { DEFAULT_AVATAR } from "@/lib/constants";
 import {
     FirebasePresence,
     subscribeToPresence,
@@ -186,7 +187,7 @@ export default function Users() {
                             {users.map((user: User) => (
                                 <div key={user.id} className="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between">
                                     <div className="flex min-w-0 items-center gap-3">
-                                        <BlurImage src={user.image || "/default-avatar.png"} alt={user.name || "User"} width={44} height={44} className="h-11 w-11 shrink-0 rounded-full object-cover" />
+                                        <BlurImage src={user.image || DEFAULT_AVATAR} alt={user.name || "User"} width={44} height={44} className="h-11 w-11 shrink-0 rounded-full object-cover" />
                                         <div className="min-w-0">
                                             <div className="flex flex-wrap items-center gap-2">
                                                 <p className="truncate text-[14px] font-medium text-[var(--s-text)]">{user.name || "Unknown"}</p>

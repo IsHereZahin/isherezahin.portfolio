@@ -1,9 +1,8 @@
 import MotionWrapper from "@/components/motion/MotionWrapper";
-import { BlurImage, ClickableTag } from "@/components/ui";
+import { BlurImage, ClickableTag, LocaleLink } from "@/components/ui";
 import { getFormattedDate, getReadTime, truncateWords } from "@/utils";
 import { Blog } from "@/utils/types";
 import { Clock, Eye, EyeOff } from "lucide-react";
-import Link from "next/link";
 
 interface ArticleProps extends Blog {
     showUnpublishedBadge?: boolean;
@@ -24,7 +23,7 @@ export default function Article({ date, views, title, slug, excerpt, imageSrc, c
                     </time>
 
                     {/* Title with link */}
-                    <Link href={`/blogs/${slug}`} className="group/link block mb-2 sm:mb-3">
+                    <LocaleLink href={`/blogs/${slug}`} className="group/link block mb-2 sm:mb-3">
                         <h3 className="text-lg sm:text-xl font-semibold text-foreground group-hover/link:text-primary transition-colors duration-300 flex items-center gap-2">
                             {title}
                             {showUnpublishedBadge && (
@@ -34,7 +33,7 @@ export default function Article({ date, views, title, slug, excerpt, imageSrc, c
                                 </span>
                             )}
                         </h3>
-                    </Link>
+                    </LocaleLink>
 
                     {/* Excerpt */}
                     <p className="text-muted-foreground group-hover/article:text-foreground/80 transition-colors mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">

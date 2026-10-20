@@ -1,6 +1,7 @@
 "use client";
 
 import { BlurImage } from "@/components/ui";
+import { DEFAULT_AVATAR } from "@/lib/constants";
 import { parseMarkdown } from "@/lib/markdown";
 import { cn } from "@/lib/utils";
 import { Check, CheckCheck, Clock, Edit2, History } from "lucide-react";
@@ -55,7 +56,7 @@ export default function ChatMessage({
         <div className={cn("flex gap-2 mb-4", isOwn ? "flex-row-reverse" : "flex-row")}>
             <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 mt-1">
                 <BlurImage
-                    src={senderImage || "/default-avatar.png"}
+                    src={senderImage || DEFAULT_AVATAR}
                     alt={senderName}
                     width={36}
                     height={36}

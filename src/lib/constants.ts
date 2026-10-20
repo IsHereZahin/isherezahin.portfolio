@@ -22,6 +22,9 @@ export const SITE_X_URL = `https://x.com/${MY_USERNAME}`;
 export const SITE_YOUTUBE_URL = `https://www.youtube.com/@${MY_USERNAME}`;
 export const SITE_LINKEDIN_URL = `https://www.linkedin.com/in/${MY_USERNAME}`;
 
+// Shown for users, chat participants and content without their own image.
+export const DEFAULT_AVATAR = "https://avatars.githubusercontent.com/u/105446082?v=4";
+
 // Base Domain
 export const BASE_DOMAIN = process.env.NEXT_PUBLIC_BASE_DOMAIN || "isherezahin.me";
 export const BASE_URL = `https://${BASE_DOMAIN}`;

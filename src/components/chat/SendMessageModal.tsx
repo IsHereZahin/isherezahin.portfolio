@@ -1,6 +1,7 @@
 "use client";
 
 import { BlurImage, ShadcnButton as Button, Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, MarkdownTextarea } from "@/components/ui";
+import { DEFAULT_AVATAR } from "@/lib/constants";
 import {
     createConversation,
     getUserConversation,
@@ -178,7 +179,7 @@ export default function SendMessageModal({
                     {isAdminMode && targetUser ? (
                         <DialogTitle className="flex items-center gap-3">
                             <BlurImage
-                                src={targetUser.image || "/default-avatar.png"}
+                                src={targetUser.image || DEFAULT_AVATAR}
                                 alt={targetUser.name || "User"}
                                 width={40}
                                 height={40}

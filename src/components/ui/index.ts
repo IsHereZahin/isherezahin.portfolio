@@ -126,6 +126,7 @@ export {
     SingleCommentLoading,
     TagsLoading
 } from "./Loading";
+export { default as LocaleLink } from "./LocaleLink";
 export { default as Logo } from "./Logo";
 export { default as NotFoundState } from "./NotFoundState";
 export { default as MarkdownEditor } from "./MarkdownEditor";

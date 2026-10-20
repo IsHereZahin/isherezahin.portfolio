@@ -1,7 +1,7 @@
 'use client';
 
 import { Check, Copy, Facebook, Linkedin, Share2 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { toast } from "sonner";
 
 interface ShareSectionProps {
@@ -11,15 +11,16 @@ interface ShareSectionProps {
     compact?: boolean;
 }
 
-export default function ShareSection({ title, type, url, compact = false }: Readonly<ShareSectionProps>) {
-    const [shareUrl, setShareUrl] = useState(url || '');
-    const [copied, setCopied] = useState(false);
+// The page URL and navigator.share only exist in the browser. Reading them
+// through useSyncExternalStore gives the server render (and hydration) a fixed
+// value, then switches to the browser's, so the pre-rendered HTML matches.
+const subscribeNever = () => () => {};
 
-    useEffect(() => {
-        if (!url && typeof window !== 'undefined') {
-            setShareUrl(window.location.href);
-        }
-    }, [url]);
+export default function ShareSection({ title, type, url, compact = false }: Readonly<ShareSectionProps>) {
+    const pageUrl = useSyncExternalStore(subscribeNever, () => window.location.href, () => '');
+    const canNativeShare = useSyncExternalStore(subscribeNever, () => typeof navigator.share === 'function', () => false);
+    const shareUrl = url || pageUrl;
+    const [copied, setCopied] = useState(false);
 
     const handleCopyLink = async () => {
         try {
@@ -96,7 +97,7 @@ export default function ShareSection({ title, type, url, compact = false }: Read
                 >
                     {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                 </button>
-                {typeof navigator !== 'undefined' && typeof navigator.share === 'function' && (
+                {canNativeShare && (
                     <button
                         onClick={handleNativeShare}
                         title="Share"
@@ -142,7 +143,7 @@ export default function ShareSection({ title, type, url, compact = false }: Read
             </div>
 
             {/* Native share button for mobile */}
-            {typeof navigator !== 'undefined' && typeof navigator.share === 'function' && (
+            {canNativeShare && (
                 <button
                     onClick={handleNativeShare}
                     className="w-full mt-3 py-2.5 px-4 rounded-xl bg-foreground text-background font-medium text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"

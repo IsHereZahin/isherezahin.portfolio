@@ -1,18 +1,19 @@
 "use client";
 
-import { Section } from "@/components/ui";
+import { LocaleLink, Section } from "@/components/ui";
 import SayCard from "@/components/saylo/SayCard";
+import { useI18n } from "@/i18n/DictionaryProvider";
 import { saylo } from "@/lib/api";
 import { useAuth } from "@/lib/hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft, Loader2 } from "lucide-react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function SayloDetailsIndex({ id }: { id: string }) {
     const { isAdmin, status, user } = useAuth();
     const isLoggedIn = status === "authenticated";
     const router = useRouter();
+    const { path } = useI18n();
 
     const { data: sayloData, isLoading, isError, error } = useQuery({
         queryKey: ["saylo", id],
@@ -36,13 +37,13 @@ export default function SayloDetailsIndex({ id }: { id: string }) {
                     <p className="text-foreground font-medium mb-4">
                         {(error as Error)?.message === "Not found" ? "Saylo not found" : "Failed to load saylo"}
                     </p>
-                    <Link
+                    <LocaleLink
                         href="/saylo"
                         className="inline-flex items-center gap-2 text-primary hover:underline"
                     >
                         <ArrowLeft className="w-4 h-4" />
                         Back to Saylo
-                    </Link>
+                    </LocaleLink>
                 </div>
             </Section>
         );
@@ -51,13 +52,13 @@ export default function SayloDetailsIndex({ id }: { id: string }) {
     return (
         <Section id="saylo-detail" className="px-4 sm:px-6 py-12 sm:py-16 max-w-2xl">
             {/* Back Button */}
-            <Link
+            <LocaleLink
                 href="/saylo"
                 className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6 transition-colors"
             >
                 <ArrowLeft className="w-4 h-4" />
                 Back to Saylo
-            </Link>
+            </LocaleLink>
 
             {/* Saylo Card with inline comments */}
             <SayCard
@@ -66,7 +67,7 @@ export default function SayloDetailsIndex({ id }: { id: string }) {
                 isLoggedIn={isLoggedIn}
                 userId={user?.id}
                 variant="detail"
-                onDeleted={() => router.push("/saylo")}
+                onDeleted={() => router.push(path("/saylo"))}
             />
         </Section>
     );

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import LocaleLink from './LocaleLink';
 import { ReactNode } from 'react';
 
 interface ButtonProps {
@@ -26,9 +26,9 @@ export default function Button({ href, text, icon, onClick, className = "" }: Re
 
     if (href) {
         return (
-            <Link href={href} className={`${baseClasses} ${className}`}>
+            <LocaleLink href={href} className={`${baseClasses} ${className}`}>
                 {content}
-            </Link>
+            </LocaleLink>
         );
     }
 

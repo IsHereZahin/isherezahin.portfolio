@@ -1,5 +1,5 @@
 import { generateProfessionalUnderline } from "@/utils";
-import Link from "next/link";
+import LocaleLink from "./LocaleLink";
 
 export interface StylishLinkProps {
     slug: string;
@@ -12,7 +12,7 @@ export default function StylishLink({ slug, label = "View Project", color = "var
     const pathD = generateProfessionalUnderline(seed);
 
     return (
-        <Link
+        <LocaleLink
             href={slug}
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 relative group mt-2"
@@ -37,6 +37,6 @@ export default function StylishLink({ slug, label = "View Project", color = "var
                     />
                 </svg>
             </div>
-        </Link>
+        </LocaleLink>
     )
 }

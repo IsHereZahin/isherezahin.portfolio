@@ -2,6 +2,7 @@
 
 import { BlurImage, ShadcnButton as Button } from "@/components/ui";
 import { profile } from "@/lib/api";
+import { DEFAULT_AVATAR } from "@/lib/constants";
 import { useAuth } from "@/lib/hooks/useAuth";
 import { useMutation } from "@tanstack/react-query";
 import { Check, Loader2, Pencil, User, X } from "lucide-react";
@@ -63,7 +64,7 @@ export default function ProfilePersonal() {
             </div>
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
                 <div className="flex-shrink-0 mx-auto lg:mx-0">
-                    <BlurImage src={user.image || "/default-avatar.png"} alt={user.name || "User Avatar"} width={100} height={100} className="rounded-full border-2 border-primary" />
+                    <BlurImage src={user.image || DEFAULT_AVATAR} alt={user.name || "User Avatar"} width={100} height={100} className="rounded-full border-2 border-primary" />
                 </div>
                 <div className="flex-1 min-w-0 space-y-4 w-full">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

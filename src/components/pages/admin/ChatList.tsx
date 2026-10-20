@@ -2,6 +2,7 @@
 
 import { PresenceIndicator } from "@/components/chat";
 import { BlurImage } from "@/components/ui";
+import { DEFAULT_AVATAR } from "@/lib/constants";
 import {
     FirebaseConversation,
     FirebasePresence,
@@ -119,7 +120,7 @@ export default function ChatList({
                             >
                                 <div className="relative shrink-0">
                                     <BlurImage
-                                        src={conv.participantImage || "/default-avatar.png"}
+                                        src={conv.participantImage || DEFAULT_AVATAR}
                                         alt={conv.participantName}
                                         width={44}
                                         height={44}

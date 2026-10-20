@@ -7,6 +7,7 @@ import EditBlogModal from "@/components/admin/EditBlogModal";
 import EditProjectModal from "@/components/admin/EditProjectModal";
 import { BlurImage } from "@/components/ui";
 import { deleteBlog, deleteProject, getBlogs, getProjects } from "@/lib/api";
+import { DEFAULT_AVATAR } from "@/lib/constants";
 import { useAuth } from "@/lib/hooks/useAuth";
 import type { Blog, Project } from "@/utils/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -197,7 +198,7 @@ export default function ContentManager({ type }: { type: ContentType }) {
                                     <div key={item.id} className="flex flex-col gap-3 py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-center sm:justify-between">
                                         <div className="flex min-w-0 items-start gap-3.5">
                                             <BlurImage
-                                                src={item.imageSrc || "/default-avatar.png"}
+                                                src={item.imageSrc || DEFAULT_AVATAR}
                                                 alt={item.title}
                                                 width={72}
                                                 height={48}

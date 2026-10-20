@@ -2,6 +2,7 @@
 
 import MotionWrapper from "@/components/motion/MotionWrapper";
 import { BlurImage, Button, PageTitle, Section } from "@/components/ui";
+import { DEFAULT_AVATAR } from "@/lib/constants";
 import { useAuth } from "@/lib/hooks/useAuth";
 import { useChatUnread } from "@/lib/hooks/useChat";
 import { LogIn, LogOut, MessageCircle, Monitor, Settings, Shield, User } from "lucide-react";
@@ -53,7 +54,7 @@ export default function ProfileLayout({ children }: { children: ReactNode }) {
                 <div className="w-full md:w-65 space-y-1 bg-card border border-border rounded-xl p-4 h-fit">
                     <div className="flex items-center gap-3 pb-4 mb-2 border-b border-border md:hidden">
                         <BlurImage
-                            src={user.image || "/default-avatar.png"}
+                            src={user.image || DEFAULT_AVATAR}
                             alt={user.name || "User Avatar"}
                             width={40}
                             height={40}

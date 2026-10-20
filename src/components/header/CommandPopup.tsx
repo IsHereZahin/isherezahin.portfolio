@@ -15,17 +15,18 @@ interface CommandPopupProps {
     onClose: () => void;
 }
 
+const ActiveTag = () => (
+    <span className="px-1.5 py-0.5 text-[10px] font-medium rounded bg-primary/20 text-primary">
+        Current
+    </span>
+);
+
 export default function CommandPopup({ onClose }: Readonly<CommandPopupProps>) {
     const { dict, path: localeHref } = useI18n();
     const pathname = usePathname();
 
     const isActive = (href: string) => pathname.startsWith(localeHref(href));
 
-    const ActiveTag = () => (
-        <span className="px-1.5 py-0.5 text-[10px] font-medium rounded bg-primary/20 text-primary">
-            Current
-        </span>
-    );
     return (
         <MotionPopup isOpen={true} className="z-50 rounded-xl bg-background/85 shadow-2xl outline-none backdrop-blur-sm border border-border p-3 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-in fade-in-0 zoom-in-95 slide-in-from-top-2">
             <Link

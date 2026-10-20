@@ -1,5 +1,5 @@
 import { ChevronRight } from "lucide-react";
-import Link from "next/link";
+import LocaleLink from "./LocaleLink";
 
 export interface SeeMoreProps {
     href: string;
@@ -9,7 +9,7 @@ export interface SeeMoreProps {
 
 export default function SeeMore({ href, text = "See more", className = "" }: Readonly<SeeMoreProps>) {
     return (
-        <Link
+        <LocaleLink
             href={href}
             className={`self-center flex items-center gap-1 hover:text-foreground transform duration-300 transition-colors text-secondary-foreground text-sm sm:text-base ${className}`}
             data-fade="3"
@@ -21,6 +21,6 @@ export default function SeeMore({ href, text = "See more", className = "" }: Rea
             >
                 <ChevronRight className="size-[70%]" strokeWidth={1.3} />
             </div>
-        </Link>
+        </LocaleLink>
     );
 }
