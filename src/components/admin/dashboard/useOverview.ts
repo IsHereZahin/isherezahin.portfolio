@@ -34,8 +34,7 @@ export function useOverview() {
 }
 
 // ---------------------------------------------------------------------------
-// Visitor analytics — reuses the existing /api/statistics endpoint. As admin
-// this returns every section regardless of the public visibility toggles.
+// Visitor analytics — /api/statistics (admin-only)
 // ---------------------------------------------------------------------------
 
 export interface TrendPoint { date: string; visitors: number; uniqueVisitors: number }

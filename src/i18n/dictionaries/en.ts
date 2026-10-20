@@ -59,7 +59,7 @@ export const en = {
         uses: { title: "Uses", description: "A peek into my digital workspace" },
         sideQuests: { title: "Side Quests", description: "New skills and adventures" },
         guestbook: { description: "Leave me a message" },
-        statistics: { title: "Statistics", description: "Crunched up numbers" },
+        bucketList: { description: "Goals I'm chasing" },
         attribution: { description: "Journey to create this site" },
     },
 

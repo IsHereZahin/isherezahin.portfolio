@@ -643,33 +643,10 @@ const newsletter = {
 const statistics = {
     async get() {
         const response = await fetch("/api/statistics");
-        if (response.status === 403) throw new ApiError("Statistics are currently private", 403);
-        if (!response.ok) {
-            const errorData = await response.json().catch(() => ({}));
-            throw new ApiError(errorData.error || "Failed to load statistics", response.status);
-        }
-        return await response.json();
-    },
-
-    async getSettings() {
-        const response = await fetch("/api/admin/statistics-settings");
         if (response.status === 403) throw new ApiError("Access denied", 403);
         if (!response.ok) {
             const errorData = await response.json().catch(() => ({}));
-            throw new ApiError(errorData.error || "Failed to load settings", response.status);
-        }
-        return await response.json();
-    },
-
-    async updateVisibility(body: Record<string, unknown>) {
-        const response = await fetch("/api/statistics/visibility", {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(body),
-        });
-        if (!response.ok) {
-            const errorData = await response.json().catch(() => ({}));
-            throw new ApiError(errorData.error || "Failed to update visibility", response.status);
+            throw new ApiError(errorData.error || "Failed to load statistics", response.status);
         }
         return await response.json();
     },

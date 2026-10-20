@@ -4,7 +4,6 @@ import { C } from "@/components/be-run/data";
 import { useAuth } from "@/lib/hooks/useAuth";
 import { useChatUnread } from "@/lib/hooks/useChat";
 import {
-    BarChart3,
     FileText,
     House,
     LayoutGrid,
@@ -43,7 +42,6 @@ const GROUP_1: NavItem[] = [
     { id: "subscribers", label: "Subscribers", href: "/admin/subscribers", icon: Mail },
 ];
 const GROUP_2: NavItem[] = [
-    { id: "statistics", label: "Statistics", href: "/admin/statistics", icon: BarChart3 },
     { id: "content", label: "Content", href: "/admin/content/blogs", icon: Newspaper, match: "/admin/content" },
     { id: "vault", label: "Vault", href: "/admin/vault", icon: LockKeyhole },
     { id: "settings", label: "Settings", href: "/admin/settings", icon: Settings },

@@ -47,7 +47,7 @@ export const fr: Dictionary = {
         uses: { title: "Équipement", description: "Un aperçu de mon espace de travail" },
         sideQuests: { title: "Quêtes secondaires", description: "Nouvelles compétences et aventures" },
         guestbook: { description: "Laissez-moi un message" },
-        statistics: { title: "Statistiques", description: "Les chiffres en bref" },
+        bucketList: { description: "Mes objectifs de vie" },
         attribution: { description: "L’histoire de ce site" },
     },
 

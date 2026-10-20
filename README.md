@@ -75,15 +75,13 @@ A modern, full-featured personal portfolio and blog platform built with Next.js 
 
 ---
 
-### Statistics Module
+### Visitor Analytics (Admin Dashboard)
 - Visitor tracking (page views & unique visitors)
 - Device analytics (Android, iOS, Windows, macOS, Linux)
 - Referral source tracking
 - Popular pages analytics
 - 30-day visitor trends with charts
-- Privacy controls for public/private visibility
-
-<!-- ![Statistics](public/assets/images/web/statistics.png) -->
+- Admin-only — not exposed publicly
 
 ---
 
@@ -92,7 +90,6 @@ A modern, full-featured personal portfolio and blog platform built with Next.js 
 - **User Management** - View, ban/unban users
 - **Subscriber Management** - Newsletter subscribers list
 - **Chat Management** - Admin chat interface
-- **Statistics Settings** - Toggle visibility of analytics sections
 - **Site Settings** - Contact info, about page, work experience configuration
 
 <!-- ![Admin Settings](public/assets/images/web/admin.png) -->
@@ -215,7 +212,6 @@ src/
 │   │   ├── guestbook/     # Guestbook page
 │   │   ├── profile/       # User profile pages
 │   │   ├── projects/      # Project showcase
-│   │   ├── statistics/    # Analytics dashboard
 │   │   └── ...
 │   └── api/               # API routes
 ├── components/            # React components

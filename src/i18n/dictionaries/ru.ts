@@ -47,7 +47,7 @@ export const ru: Dictionary = {
         uses: { title: "Оборудование", description: "Взгляд на моё рабочее место" },
         sideQuests: { title: "Сайд-квесты", description: "Новые навыки и приключения" },
         guestbook: { description: "Оставьте сообщение" },
-        statistics: { title: "Статистика", description: "Цифры вкратце" },
+        bucketList: { description: "Мои цели в жизни" },
         attribution: { description: "Как создавался этот сайт" },
     },
 

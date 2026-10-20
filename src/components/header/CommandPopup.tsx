@@ -1,6 +1,6 @@
 "use client";
 
-import { BarChart3, BookOpen, Info } from "lucide-react";
+import { BookOpen, Info, ListChecks } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -107,28 +107,28 @@ export default function CommandPopup({ onClose }: Readonly<CommandPopupProps>) {
                         <div className="mt-0.5 p-3 bg-muted text-muted-foreground rounded-xl [&>svg]:size-4 [&>svg]:stroke-1">
                             <BookOpen className="size-4 stroke-1" />
                         </div>
-                        <div className="grow">
+                        <div className="grow min-w-0">
                             <div className="flex items-center gap-2 justify-between">
                                 <p className="text-sm font-semibold underline decoration-transparent group-hover/header-link:decoration-foreground/50 transition-colors text-foreground">{dict.nav.guestbook}</p>
                                 {isActive("/guestbook") && <ActiveTag />}
                             </div>
-                            <p className="text-xs text-muted-foreground mt-0.5">{dict.menu.guestbook.description}</p>
+                            <p className="text-xs text-muted-foreground mt-0.5 truncate">{dict.menu.guestbook.description}</p>
                         </div>
                     </Link>
                     <Link
                         className="group/header-link p-3 rounded-xl bg-muted/70 w-full flex items-start gap-3 transition-colors hover:bg-muted flex-1"
-                        href={localeHref("/statistics")}
+                        href={localeHref("/bucket-list")}
                         onClick={onClose}
                     >
                         <div className="mt-0.5 p-3 bg-muted text-muted-foreground rounded-xl [&>svg]:size-4 [&>svg]:stroke-1">
-                            <BarChart3 className="size-4 stroke-1" />
+                            <ListChecks className="size-4 stroke-1" />
                         </div>
-                        <div className="grow">
+                        <div className="grow min-w-0">
                             <div className="flex items-center gap-2 justify-between">
-                                <p className="text-sm font-semibold underline decoration-transparent group-hover/header-link:decoration-foreground/50 transition-colors text-foreground">{dict.menu.statistics.title}</p>
-                                {isActive("/statistics") && <ActiveTag />}
+                                <p className="text-sm font-semibold underline decoration-transparent group-hover/header-link:decoration-foreground/50 transition-colors text-foreground">{dict.nav.bucketList}</p>
+                                {isActive("/bucket-list") && <ActiveTag />}
                             </div>
-                            <p className="text-xs text-muted-foreground mt-0.5">{dict.menu.statistics.description}</p>
+                            <p className="text-xs text-muted-foreground mt-0.5 truncate">{dict.menu.bucketList.description}</p>
                         </div>
                     </Link>
                     <Link
@@ -139,12 +139,12 @@ export default function CommandPopup({ onClose }: Readonly<CommandPopupProps>) {
                         <div className="mt-0.5 p-3 bg-muted text-muted-foreground rounded-xl [&>svg]:size-4 [&>svg]:stroke-1">
                             <Info className="size-4 stroke-1" />
                         </div>
-                        <div className="grow">
+                        <div className="grow min-w-0">
                             <div className="flex items-center gap-2 justify-between">
                                 <p className="text-sm font-semibold underline decoration-transparent group-hover/header-link:decoration-foreground/50 transition-colors text-foreground">{dict.nav.attribution}</p>
                                 {isActive("/attribution") && <ActiveTag />}
                             </div>
-                            <p className="text-xs text-muted-foreground mt-0.5">{dict.menu.attribution.description}</p>
+                            <p className="text-xs text-muted-foreground mt-0.5 truncate">{dict.menu.attribution.description}</p>
                         </div>
                     </Link>
                 </div>

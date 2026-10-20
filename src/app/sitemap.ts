@@ -58,12 +58,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     },
     {
-      url: getFullUrl("/statistics"),
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.4,
-    },
-    {
       url: getFullUrl("/attribution"),
       lastModified: new Date(),
       changeFrequency: "yearly",

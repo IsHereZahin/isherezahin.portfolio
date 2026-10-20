@@ -11,7 +11,7 @@ interface Kpi {
     label: string;
     value: string;
     sub: string;
-    href: string;
+    href?: string;
     icon: IconType;
     iconClass: string; // icon color
     chipClass: string; // icon tile background
@@ -39,7 +39,6 @@ export default function KpiStrip({ overview, stats }: { overview: OverviewData; 
             label: "Page Views",
             value: fmtCompact(totalViews),
             sub: `${fmtCompact(uniqueViews)} unique visitors`,
-            href: "/admin/statistics",
             icon: Eye,
             iconClass: "text-[#EE5D4A]",
             chipClass: "bg-[#EE5D4A]/12",
@@ -80,19 +79,17 @@ export default function KpiStrip({ overview, stats }: { overview: OverviewData; 
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
             {kpis.map((k) => {
                 const Icon = k.icon;
-                return (
-                    <Link
-                        key={k.label}
-                        href={k.href}
-                        className={`${CARD} group flex flex-col gap-4 p-5! transition-shadow hover:shadow-[0_4px_16px_rgba(0,0,0,0.06)]`}
-                    >
+                const body = (
+                    <>
                         <div className="flex items-start justify-between gap-2">
                             <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${k.chipClass}`}>
                                 <Icon className={`h-5 w-5 ${k.iconClass}`} />
                             </span>
                             <div className="flex items-center gap-1.5">
                                 {k.delta}
-                                <ArrowUpRight className="h-4 w-4 text-[var(--s-faint)] transition-colors group-hover:text-[var(--s-text)]" />
+                                {k.href && (
+                                    <ArrowUpRight className="h-4 w-4 text-[var(--s-faint)] transition-colors group-hover:text-[var(--s-text)]" />
+                                )}
                             </div>
                         </div>
                         <div className="min-w-0">
@@ -100,6 +97,25 @@ export default function KpiStrip({ overview, stats }: { overview: OverviewData; 
                             <p className="mt-1.5 text-[13px] font-medium text-[var(--s-text)]">{k.label}</p>
                             <p className="mt-0.5 truncate text-[12px] text-[var(--s-muted)]">{k.sub}</p>
                         </div>
+                    </>
+                );
+
+                // Cards without a destination render as plain tiles, not links.
+                if (!k.href) {
+                    return (
+                        <div key={k.label} className={`${CARD} flex flex-col gap-4 p-5!`}>
+                            {body}
+                        </div>
+                    );
+                }
+
+                return (
+                    <Link
+                        key={k.label}
+                        href={k.href}
+                        className={`${CARD} group flex flex-col gap-4 p-5! transition-shadow hover:shadow-[0_4px_16px_rgba(0,0,0,0.06)]`}
+                    >
+                        {body}
                     </Link>
                 );
             })}
